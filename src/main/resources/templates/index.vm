@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sample index page</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+	<!-- jquery --> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>   
+	
+	<h2>Spring Post/Redirect/Get pattern with FlashMap</h2>
+
+	#if ($formResults)  
+		<div class="alert alert-success" role="alert">
+			Thanks $!formResults.name, updates will be sent to $!formResults.emailAddress. Your confirmation number is $!formResults.confirmationNumber
+		</div>
+	#end
+
+	<form class="form-inline" name="myform" id="myform" action="/handle" method="post">
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input type="text" name="name" id="name">
+		</div>
+
+		<div class="form-group">
+			<label for="emailAddress">Email</label>
+		    <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="jane.doe@example.com">
+		</div>
+		<input id="mySubmitButton" type="submit" value="Submit" class="btn btn-default">
+	</form>
+<script>
+	$("#myform").submit(function( event ) {
+		$("#mySubmitButton").prop("disabled", true).addClass("disabled");
+	});
+</script>
+</body>
+</html>
